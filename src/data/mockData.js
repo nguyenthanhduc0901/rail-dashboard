@@ -279,9 +279,6 @@ export const issues = [
 
 export const navLinks = [
   { to: '/', label: 'Dashboard' },
-  { to: '/issues', label: 'Issues' },
-  { to: '/reports', label: 'Reports' },
-  { to: '/settings', label: 'Settings' },
 ]
 
 export const getTrainById = (trainId) => trains.find((train) => train.id === trainId)

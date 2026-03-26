@@ -1,8 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { navLinks } from '../data/mockData'
-import { ChatbotPanel } from '../components/ChatbotPanel'
 import { Sidebar } from '../components/Sidebar'
-import { TopBar } from '../components/TopBar'
 
 export function AppLayout() {
   return (
@@ -12,14 +10,11 @@ export function AppLayout() {
         <Sidebar links={navLinks} />
 
         <div className="flex min-w-0 flex-1 flex-col">
-          <TopBar />
           <main className="flex-1 px-4 py-5 lg:px-6 lg:py-6">
             <Outlet />
           </main>
         </div>
       </div>
-
-      <ChatbotPanel />
     </div>
   )
 }
