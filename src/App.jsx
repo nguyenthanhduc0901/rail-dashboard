@@ -1,6 +1,5 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { AppLayout } from './layout/AppLayout'
-import { CarriageDetail } from './screens/CarriageDetail'
 import { FleetDashboard } from './screens/FleetDashboard'
 
 const router = createBrowserRouter([
@@ -9,7 +8,6 @@ const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { index: true, element: <FleetDashboard /> },
-      { path: 'carriage/:carriageId', element: <CarriageDetail /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

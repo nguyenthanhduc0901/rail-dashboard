@@ -1,12 +1,9 @@
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight, ClipboardList, LayoutDashboard, Settings, FileBarChart2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, LayoutDashboard } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 const iconMap = {
   Dashboard: LayoutDashboard,
-  Issues: ClipboardList,
-  Reports: FileBarChart2,
-  Settings: Settings,
 }
 
 export function Sidebar({ links }) {

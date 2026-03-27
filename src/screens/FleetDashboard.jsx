@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { trains, getCarriagesByTrain } from '../data/mockData'
+import { CarriageDetailsModal } from '../components/CarriageDetailsModal'
 
 // --- CẤU HÌNH ---
 const statusConfig = {
@@ -25,6 +26,22 @@ const CarriageWindow = () => (
 )
 
 export function FleetDashboard() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedTrain, setSelectedTrain] = useState(null)
+  const [selectedCarriage, setSelectedCarriage] = useState(null)
+
+  const openModal = (train, carriage) => {
+    setSelectedTrain(train)
+    setSelectedCarriage(carriage)
+    setModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
+    setSelectedTrain(null)
+    setSelectedCarriage(null)
+  }
+
   return (
     <section className="space-y-12 pb-12">
       {/* FLEET HEADER */}
@@ -133,7 +150,10 @@ export function FleetDashboard() {
 
                           {/* Toa xe */}
                           {/* Tương tự đầu tàu */}
-                          <div className="relative flex-shrink-0 h-40 w-44 cursor-pointer transition-transform hover:-translate-y-1 group z-10 block">
+                          <div 
+                            className="relative flex-shrink-0 h-40 w-44 cursor-pointer transition-transform hover:-translate-y-1 group z-10 block"
+                            onClick={() => openModal(train, carriage)}
+                          >
                             
                             {/* LỚP 1: KHUNG THÂN TOA TÀU */}
                             <div className={`absolute inset-0 border-2 ${carriageConfig.bg} ${shapeClasses} overflow-hidden shadow-md flex flex-col`}>
@@ -179,6 +199,14 @@ export function FleetDashboard() {
           )
         })}
       </div>
+
+      {/* Modal Component */}
+      <CarriageDetailsModal 
+        isOpen={modalOpen}
+        onClose={closeModal}
+        train={selectedTrain}
+        carriage={selectedCarriage}
+      />
     </section>
   )
 }
